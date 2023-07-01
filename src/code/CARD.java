@@ -1,0 +1,5 @@
+package code;
+
+public enum CARD {
+    ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, DRAW_2, WILD, WILD_DRAW_4, SKIP, REVERSE
+}

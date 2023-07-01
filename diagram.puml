@@ -1,0 +1,143 @@
+@startuml
+class GameWindow {
+~ UnoGame UnoGame
+- ImageView topCardImage
+- FlowPane handPane
+- VBox middleText
+~ Stage window
+~ int cardsDrawn
++ void display()
+- Node createCardComponent(UnoCard,boolean)
+}
+class Main {
++ {static} void main(String[])
++ void start(Stage)
+}
+class UnoCard {
+- COLOR color
+- CARD card
++ CARD getCard()
++ COLOR getColor()
++ void setColor(COLOR)
++ Image getCardImage()
+}
+class WinWindow {
+~ Player player
+~ Stage window
+~ Scene scene1
+~ Button restartButton
+~ UnoGame unoGame
++ void display()
+- void closeProgram()
+}
+class UnoGame {
+- int currentPlayer
+- Deck deck
+- Player jeff
++ ArrayList<Player> players
+- int direction
++ Player getJeff()
++ Deck getDeck()
++ int getCurrentPlayer()
++ void setCurrentPlayer(int)
++ void flipTopCard()
++ void playerTurn()
++ Player getNextPlayer()
++ void handleWild(UnoCard)
++ void handleWildDraw4(UnoCard)
++ void handleSkip(UnoCard)
++ void handleReverse(UnoCard)
++ void handleDraw2(UnoCard)
++ void handleWin()
+}
+class LoginBox {
+- {static} int numPlayers
+- {static} int numDecks
++ {static} boolean display()
+- {static} boolean validateInput(String,String)
+}
+enum CARD {
++  ZERO
++  ONE
++  TWO
++  THREE
++  FOUR
++  FIVE
++  SIX
++  SEVEN
++  EIGHT
++  NINE
++  DRAW_2
++  WILD
++  WILD_DRAW_4
++  SKIP
++  REVERSE
+}
+class AlertBox {
+~ Label label
++ void display(UnoGame)
+}
+class Player {
++ int number
+- ArrayList<UnoCard> hand
+- int pointsInHand
++ int getPointsInHand()
++ void removeCardFromHand(UnoCard)
++ void addCardToHand(UnoCard)
++ int printHand()
++ ArrayList<UnoCard> getHand()
+}
+class TurnStartWindow {
+~ Label label
++ void display(UnoGame)
+}
+class HomeWindow {
+~ Stage window
+~ Scene scene1
+~ Button startButton
++ void display()
+- void closeProgram()
+}
+class ConfirmBox {
+~ {static} boolean answer
++ {static} boolean display(String,String)
+}
+class Deck {
++ ArrayList<UnoCard> deck
++ Stack<UnoCard> playDeck
++ Stack<UnoCard> discardPile
+- int decks
+- void addCards(int)
+- void shuffleDeck(ArrayList<UnoCard>)
+- void prepPlayDeck()
++ void dealCards(ArrayList<Player>)
+- void reshuffleDeck()
++ void dealCard(Player)
++ boolean isPlayable(UnoCard)
++ boolean canPlay(ArrayList<UnoCard>)
+}
+enum COLOR {
++  RED
++  GREEN
++  YELLOW
++  BLUE
++  BLACK
+}
+
+
+javafx.application.Application <|-- Main
+Deck "1" *-- "108" UnoCard
+UnoGame *-- Player
+UnoGame *-- Deck
+Main -right-> HomeWindow
+HomeWindow -down-> LoginBox
+LoginBox -down-> UnoGame
+TurnStartWindow -down-> UnoGame
+AlertBox -down-> UnoGame
+GameWindow -down-> UnoGame
+WinWindow -down-> UnoGame
+UnoCard *-- COLOR
+UnoCard *-- CARD
+HomeWindow -> ConfirmBox
+WinWindow -up-> ConfirmBox
+@enduml
