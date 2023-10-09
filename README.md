@@ -1,15 +1,18 @@
 # UnoCardGame
-This is the famous Card game Uno implemented in Java with JFX.
 
-Here is the link the video Demo: TODO
+Experience the renowned card game Uno, now meticulously recreated in Java utilizing JFX.
 
-Implemented Features:
-2-Infinite Players,
-1-infinite Decks,
-All Standard Uno Rules,
-Post round point tracking
+## Demo
+Video demonstration will be available soon.
+**Link:** TODO
 
-Possible Future Features:
-Bot players,
-Online Multiplayer,
-Custom rules
+## Implemented Features
+- Player Count: From 2 to an unlimited number.
+- Deck Configuration: From 1 to an unlimited number of decks.
+- Fully compliant with standard Uno rules.
+- Point tracking system post each round.
+
+## Possible Future Features
+- Implementation of bot players.
+- Introduction of an online multiplayer mode.
+- Option to customize and tweak the rules.
